@@ -32,4 +32,10 @@ public class EventSocket extends WebSocketAdapter
         super.onWebSocketError(cause);
         cause.printStackTrace(System.err);
     }
+
+    @Override
+    public void onWebSocketBinary(byte[] payload, int offset, int len) {
+        super.onWebSocketBinary(payload, offset, len);
+        System.out.println("I've got a binary message:" + new String(payload));
+    }
 }

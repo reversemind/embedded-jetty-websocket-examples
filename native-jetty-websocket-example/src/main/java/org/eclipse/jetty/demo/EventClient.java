@@ -1,6 +1,7 @@
 package org.eclipse.jetty.demo;
 
 import java.net.URI;
+import java.nio.ByteBuffer;
 import java.util.concurrent.Future;
 
 import org.eclipse.jetty.websocket.api.Session;
@@ -25,7 +26,8 @@ public class EventClient
                 // Wait for Connect
                 Session session = fut.get();
                 // Send a message
-                session.getRemote().sendString("Hello");
+//                session.getRemote().sendString("Hello");
+                session.getRemote().sendBytes(ByteBuffer.wrap("Hello".getBytes()));
                 // Close session
                 session.close();
             }
